@@ -1,0 +1,61 @@
+escribir ("Hello! Welcome to my game. Type north, south, east, or west to move. type use, pick up, or drop, to perform those actions.")
+x = 1
+y = 1
+mapa = 	[["╔", "══", "══", "══", "══", "══", "══", "╗"], ["║", "b2", "c2", "d2", "e2", "f2", "g2", "║"], ["║", "b3", "c3", "d3", "e3", "f3", "g3", "║"], ["║", "b4", "c4", "d4", "e4", "f4", "g4", "║"], ["║", "b5", "c5", "d5", "e5", "f5", "g5", "║"], ["║", "b6", "c6", "d6", "e6", "f6", "g6", "║"], ["║", "b7", "c7", "d7", "e7", "f7", "g7", "║"], ["╚", "══", "══", "══", "══", "══", "══", "╝"]]
+collisionMap = [["y", "y", "y", "y", "y", "y", "y", "y"], ["y", "n", "n", "n", "n", "n", "n", "y"], ["y", "n", "n", "n", "n", "n", "n", "y"], ["y", "n", "n", "n", "n", "n", "n", "y"], ["y", "n", "n", "n", "n", "n", "n", "y"], ["y", "n", "n", "n", "n", "n", "n", "y"], ["y", "n", "n", "n", "n", "n", "n", "y"], ["y", "y", "y", "y", "y", "y", "y", "h8"]]
+// itemList = ["nothing",["item","()"]];
+// itemMap = []
+
+mientras verdadero
+    
+
+    desde(i=0;i<lista.longitud(mapa);i++)
+        tempArr = mapa[i]
+        tempString = ""
+        tempString2 = ""
+        // escribir (lista.longitud(tempArr))
+        desde(a=0;a < lista.longitud(tempArr);a++)
+            si ((x == a) && (y == i))
+                tempString2 = cadena.concatenar(tempString,"☺ ")
+                tempString = tempString2
+                // escribir (a)
+            sino
+                // si (itemMap[i][a]!=0)
+                //     #codigo
+                // sino
+                //     #codigo
+                // fin
+                tempString2 = cadena.eliminar( cadena.concatenar(tempString,mapa[i][a]),"nulo")
+                tempString = tempString2
+                // escribir (a)
+            fin
+        fin
+        escribir(tempString)
+    fin
+    response = leer()
+    si response == "north"
+        si collisionMap[y-1][x] == "n"
+            y--
+        fin
+        
+    sino 
+        si response == "south"
+            si collisionMap[y+1][x] == "n"
+                y++
+            fin
+        sino 
+            si response == "west"
+                si collisionMap[y][x-1] == "n"
+                    x--
+                fin
+            sino 
+                si response == "east"
+                    si collisionMap[y][x+1] == "n"
+                        x++
+                    fin
+                fin
+            fin
+        fin
+    fin
+    limpiar()
+fin
